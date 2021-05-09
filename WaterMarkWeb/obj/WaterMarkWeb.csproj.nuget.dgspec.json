@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\WaterMarkWeb\\WaterMarkWeb.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\AzureStorageLibrary\\AzureStorageLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\AzureStorageLibrary\\AzureStorageLibrary.csproj",
+        "projectName": "AzureStorageLibrary",
+        "projectPath": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\AzureStorageLibrary\\AzureStorageLibrary.csproj",
+        "packagesPath": "C:\\Users\\ArdaSertan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\AzureStorageLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ArdaSertan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.8.3, )"
+            },
+            "Azure.Storage.Queues": {
+              "target": "Package",
+              "version": "[12.6.1, )"
+            },
+            "Microsoft.Azure.Cosmos.Table": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\WaterMarkWeb\\WaterMarkWeb.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\WaterMarkWeb\\WaterMarkWeb.csproj",
+        "projectName": "WaterMarkWeb",
+        "projectPath": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\WaterMarkWeb\\WaterMarkWeb.csproj",
+        "packagesPath": "C:\\Users\\ArdaSertan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\WaterMarkWeb\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ArdaSertan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\AzureStorageLibrary\\AzureStorageLibrary.csproj": {
+                "projectPath": "C:\\Users\\ArdaSertan\\source\\repos\\SampleAzureStorage\\AzureStorageLibrary\\AzureStorageLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

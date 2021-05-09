@@ -14,7 +14,7 @@ namespace AzureStorageLibrary.Abstract
         logs
     }
 
-    interface IBlobStorage
+    public interface IBlobStorage
     {
         public string BlobUrl { get; set; }
         Task UploadAsync(Stream fileStream, string fileName, EContanierName eContanierName);

@@ -2,7 +2,6 @@ C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\bin\Debu
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\bin\Debug\net5.0\AzureStorageLibrary.dll
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\bin\Debug\net5.0\ref\AzureStorageLibrary.dll
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\bin\Debug\net5.0\AzureStorageLibrary.pdb
-C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\obj\Debug\net5.0\AzureStorageLibrary.csprojAssemblyReference.cache
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\obj\Debug\net5.0\AzureStorageLibrary.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\obj\Debug\net5.0\AzureStorageLibrary.AssemblyInfoInputs.cache
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\AzureStorageLibrary\obj\Debug\net5.0\AzureStorageLibrary.AssemblyInfo.cs
