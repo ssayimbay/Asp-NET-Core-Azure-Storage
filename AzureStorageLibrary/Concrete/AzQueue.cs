@@ -15,9 +15,9 @@ namespace AzureStorageLibrary.Concrete
     {
         private readonly QueueClient _queueClient;
 
-        public AzQueue(string queueName)
+        public AzQueue()
         {
-            _queueClient = new QueueClient(ConnectionStrings.AzureStorageConnectionString, queueName);
+            _queueClient = new QueueClient(AzureStorageConstant.AzureStorageConnectionString, AzureStorageConstant.QueueName);
             _queueClient.CreateIfNotExists();
         }
 

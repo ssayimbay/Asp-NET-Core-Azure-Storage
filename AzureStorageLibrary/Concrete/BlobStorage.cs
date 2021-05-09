@@ -12,12 +12,12 @@ namespace AzureStorageLibrary.Concrete
 {
     public class BlobStorage : IBlobStorage
     {
-        public string BlobUrl { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string BlobUrl => "http://127.0.0.1:10000/devstoreaccount1";
         private readonly BlobServiceClient _blobServiceClient;
 
         public BlobStorage()
         {
-            _blobServiceClient = new BlobServiceClient(ConnectionStrings.AzureStorageConnectionString);
+            _blobServiceClient = new BlobServiceClient(AzureStorageConstant.AzureStorageConnectionString);
         }
 
         public async Task DeleteAsync(string fileName, EContanierName eContanierName)

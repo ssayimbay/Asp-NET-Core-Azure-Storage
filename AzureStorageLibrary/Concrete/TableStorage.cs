@@ -17,7 +17,7 @@ namespace AzureStorageLibrary.Concrete
 
         public TableStorage()
         {
-            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(ConnectionStrings.AzureStorageConnectionString);
+            CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(AzureStorageConstant.AzureStorageConnectionString);
             _cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
             _cloudTable = _cloudTableClient.GetTableReference(typeof(TEntity).Name);
             _cloudTable.CreateIfNotExists();
@@ -44,7 +44,7 @@ namespace AzureStorageLibrary.Concrete
 
         public async Task<TEntity> Get(string rowKey, string partitonKey)
         {
-            var operation = TableOperation.Retrieve<TEntity>(rowKey, partitonKey);
+            var operation = TableOperation.Retrieve<TEntity>(partitonKey, rowKey);
             var execute = await _cloudTable.ExecuteAsync(operation);
             return execute.Result as TEntity;
         }

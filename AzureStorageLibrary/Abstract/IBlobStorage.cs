@@ -11,12 +11,13 @@ namespace AzureStorageLibrary.Abstract
     {
         pictures,
         pdf,
-        logs
+        logs,
+        watermarkpictures
     }
 
     public interface IBlobStorage
     {
-        public string BlobUrl { get; set; }
+        public string BlobUrl { get;}
         Task UploadAsync(Stream fileStream, string fileName, EContanierName eContanierName);
         Task<Stream> DownloadAsync(string fileName, EContanierName eContanierName);
         Task DeleteAsync(string fileName, EContanierName eContanierName);

@@ -1,3 +1,5 @@
+using AzureStorageLibrary.Abstract;
+using AzureStorageLibrary.Concrete;
 using AzureStorageLibrary.Constant;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +26,11 @@ namespace WaterMarkWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ConnectionStrings
+            AzureStorageConstant.AzureStorageConnectionString = Configuration.GetSection("AzureConnectionStrings")["StorageLocalConStr"];
+            AzureStorageConstant.QueueName = Configuration.GetSection("QueueNames")["LocalQueue"];
+            services.AddScoped(typeof(INoSqlStorage<>), typeof(TableStorage<>));
+            services.AddSingleton<IBlobStorage, BlobStorage>();
+            services.AddScoped(typeof(IQueue), typeof(AzQueue));
             services.AddControllersWithViews();
         }
 

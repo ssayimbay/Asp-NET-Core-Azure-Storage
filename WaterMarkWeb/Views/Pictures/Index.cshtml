@@ -1,0 +1,89 @@
+﻿@model List<BlobViewModel>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(() => {
+
+            var pictures = new Array();
+
+            $("#images img").click(function () {
+
+                if ($(this).hasClass("selected")) {
+
+                    pictures.splice($(this).attr("data-name"), 1);
+                    $(this).css("border", "0px solid red");
+                    $(this).removeClass("selected");
+                }
+                else {
+                    $(this).css("border", "3px solid red");
+                    pictures.push($(this).attr("data-name"));
+                    $(this).addClass("selected");
+                }
+            });
+
+            $("#removePicture").click(() => {
+                $.ajax({
+                    type: "POST",
+                    url: 'Pictures/DeletePaths',
+                    data: { pictures: pictures },
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data, status) {
+                    location.reload();
+                }
+
+                function errorFunc() {
+                    console.log('error');
+                }
+            });
+
+        });
+
+
+
+    </script>
+}
+
+
+
+
+    <div id="watermarkControl" class="row m-1 mt-5">
+        <input type="text" class="form-control col-8" placeholder="Watermark text..." />
+        <button class="btn btn-warning form-control col-2 offset-2">Add Watermark</button>
+
+    </div>
+
+    <div id="header" class="row m-1 mt-3">
+        <hr />
+        <h2 class="text-center text-white bg-dark rounded p-1 col-12">Pictures</h2>
+    </div>
+
+    <div id="imagesControl" class="row">
+        <div class="col-10">
+            <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
+                <input class="form-control-file col-4" type="file" name="pictures" multiple />
+                <input class="btn btn-primary form-control offset-6 col-2" type="submit" value="Add Picture" />
+            </form>
+        </div>
+
+        <div class="col-2">
+            <button id="removePicture" class="btn btn-danger form-control">Remove Picture</button>
+        </div>
+    </div>
+
+    <div class="row mt-5" id="images">
+
+        <div class="col-12">
+            @foreach (var blob in Model)
+            {
+                <img style="width:200px; height:200px;" data-name="@blob.Name" src="@blob.Url" />
+            }
+        </div>
+    </div>
+
