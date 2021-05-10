@@ -1,0 +1,98 @@
+﻿@model List<BlobViewModel>
+
+@section Scripts
+{
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(() => {
+
+            var pictures = new Array();
+            var selectedIndex = 0;
+            var UserId = "@ViewBag.UserId";
+            var UserPartitionKey = "@ViewBag.UserPartitionKey";
+            $("#selectedPictureCount").text("Selected " + selectedIndex.toString() + " picture.");
+
+            $("#images img").click(function () {
+
+                if ($(this).hasClass("selected")) {
+
+                    pictures.splice($(this).attr("data-name"), 1);
+                    $(this).css("border", "0px solid red");
+                    $(this).removeClass("selected");
+                    selectedIndex--;
+                }
+                else {
+                    $(this).css("border", "3px solid red");
+                    pictures.push($(this).attr("data-name"));
+                    $(this).addClass("selected");
+                    selectedIndex++;
+                }
+                $("#selectedPictureCount").text("Selected " + selectedIndex.toString() + " picture.");
+            });
+
+            $("#removePicture").click(() => {
+                $.ajax({
+                    type: "POST",
+                    url: 'WatermarkPictures/DeletePaths',
+                    data: { pictures: pictures },
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data, status) {
+                    location.reload();
+                }
+
+                function errorFunc() {
+                    console.log('error');
+                }
+            });
+
+       
+
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+<div id="header" class="row m-1 mt-3">
+    <hr />
+    <h2 class="text-center text-white bg-dark rounded p-1 col-12">WaterMark Pictures</h2>
+</div>
+
+<div id="imagesControl" class="row">
+
+    <div id="selectedPictureCount" class="col-10 text-black font-weight-bold vw-100">
+
+    </div>
+    <div class="col-2">
+        <button id="removePicture" class="btn btn-danger form-control">Remove Picture</button>
+    </div>
+
+    <div class="row mt-5" id="images">
+
+        <div class="col-12">
+            @foreach (var blob in Model)
+            {
+                <img style="width:200px; height:200px;" data-name="@blob.Name" src="@blob.Url" />
+            }
+        </div>
+
+
+
+    </div>
+
+
+</div>

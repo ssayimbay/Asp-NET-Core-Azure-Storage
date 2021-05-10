@@ -9,7 +9,7 @@ using WaterMarkWeb.Hubs;
 
 namespace WaterMarkWeb.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class NotificationsController : ControllerBase
     {
@@ -19,7 +19,8 @@ namespace WaterMarkWeb.Controllers
             _hubContext = hubContext;
         }
 
-        public async Task<IActionResult> ComplateWatermarkProcess(string connectionId)
+        [HttpGet("{connectionId}")]
+        public async Task<IActionResult> CompleteWatermarkProcess(string connectionId)
         {
            await _hubContext.Clients.Client(connectionId).SendAsync("NotifyCompleteWatermarkProcess");
 

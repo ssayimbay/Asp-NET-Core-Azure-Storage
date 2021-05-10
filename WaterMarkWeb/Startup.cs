@@ -33,7 +33,7 @@ namespace WaterMarkWeb
             AzureStorageConstant.AzureStorageConnectionString = Configuration.GetSection("AzureConnectionStrings")["StorageLocalConStr"];
             AzureStorageConstant.QueueName = Configuration.GetSection("QueueNames")["LocalQueue"];
             services.AddScoped(typeof(INoSqlStorage<>), typeof(TableStorage<>));
-            services.AddSingleton<IBlobStorage, BlobStorage>();
+            services.AddScoped<IBlobStorage, BlobStorage>();
             services.AddScoped(typeof(IQueue), typeof(AzQueue));
             services.AddControllersWithViews();
             services.AddSignalR();

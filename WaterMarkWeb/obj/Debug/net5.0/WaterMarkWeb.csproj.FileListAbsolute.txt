@@ -54,3 +54,4 @@ C:\Users\ArdaSertan\source\repos\SampleAzureStorage\WaterMarkWeb\bin\Debug\net5.
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\WaterMarkWeb\bin\Debug\net5.0\AzureStorageLibrary.pdb
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\WaterMarkWeb\obj\Debug\net5.0\Razor\Views\Pictures\Index.cshtml.g.cs
 C:\Users\ArdaSertan\source\repos\SampleAzureStorage\WaterMarkWeb\bin\Debug\net5.0\libman.json
+C:\Users\ArdaSertan\source\repos\SampleAzureStorage\WaterMarkWeb\obj\Debug\net5.0\Razor\Views\WatermarkPictures\Index.cshtml.g.cs

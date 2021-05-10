@@ -14,6 +14,11 @@
                 console.log(connection.connectionId);
             });
 
+            connection.on("NotifyCompleteWatermarkProcess", () => {
+
+                $("#info").text("INFO : Selected pictures added watermark.");
+            })
+
             var pictures = new Array();
 
             var UserId = "@ViewBag.UserId";
@@ -59,7 +64,7 @@
                 {
                     "UserId": UserId, "UserPartitionKey": UserPartitionKey, "ConnectionId": connection.connectionId, "WatermarkText": $("#waterMarkText").val(), "Pictures": pictures
                 };
-
+                $("#info").text("INFO : Selected pictures adding watermark please wait.");
                 $.ajax({
                     type: "POST",
                     url: 'Pictures/AddWaterMark',
@@ -82,34 +87,43 @@
 
     </script>
 }
-
-
-<div id="watermarkControl" class="row m-1 mt-5">
-    <input id="waterMarkText" type="text" class="form-control col-8" placeholder="Watermark text..." />
-    <button id="addWaterMark" class="btn btn-warning form-control col-2 offset-2">Add Watermark</button>
-
-</div>
-
 <div id="header" class="row m-1 mt-3">
     <hr />
     <h2 class="text-center text-white bg-dark rounded p-1 col-12">Pictures</h2>
 </div>
 
-<div id="imagesControl" class="row">
-    <div class="col-10">
+<div class="container">
+    <div class="row">
+        <div class="col-6">
 
-        <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
-            <input class="form-control-file col-4" type="file" name="pictures" multiple />
-            <input class="btn btn-primary form-control offset-6 col-2" type="submit" value="Add Picture" />
-        </form>
-    </div>
+            <div class="row">
 
-    <div class="col-2">
-        <button id="removePicture" class="btn btn-danger form-control">Remove Picture</button>
+                <div class="col-9"></div>
+                <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
+                    <input class="form-control-file col-8" type="file" name="pictures" multiple />
+                    <input class="btn btn-primary form-control col-3 btn-block" type="submit" value="Add Picture" />
+                </form>
+
+                <button id="removePicture" class="btn btn-danger form-control col-3 tn-block">Remove Picture</button>
+            </div>
+        </div>
+   
+        <div class="col-6">
+            <div class="row">
+                <input id="waterMarkText" type="text" class="form-control col-6" placeholder="Watermark text..." />
+                <button id="addWaterMark" class="btn btn-warning form-control col-4 btn-block offset-2 btn-block">Add Watermark</button>
+            </div>
+        </div>
+
+
     </div>
 </div>
+<div id="info" class="row alert alert-info m-1 mt-5">
+    INFO : 
 
-<div class="row mt-5" id="images">
+</div>
+
+<div class="row mt-5"  id="images">
 
     <div class="col-12">
         @foreach (var blob in Model)
