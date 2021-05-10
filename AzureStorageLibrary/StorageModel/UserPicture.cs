@@ -21,9 +21,9 @@ namespace AzureStorageLibrary.StorageModel
         public string WatermarkRawPaths { get; set; }
 
         [IgnoreProperty]
-        public List<string> WaterMarkPaths
+        public List<string> WatermarkPaths
         {
-            get => WaterMarkPaths == null ? null : JsonConvert.DeserializeObject<List<string>>(WatermarkRawPaths);
+            get => WatermarkRawPaths == null ? null : JsonConvert.DeserializeObject<List<string>>(WatermarkRawPaths);
             set => WatermarkRawPaths = JsonConvert.SerializeObject(value);
         }
     }

@@ -11,6 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Azure;
+using Azure.Storage.Queues;
+using Azure.Storage.Blobs;
+using Azure.Core.Extensions;
 
 namespace WaterMarkWeb
 {
@@ -33,6 +37,7 @@ namespace WaterMarkWeb
             services.AddScoped(typeof(IQueue), typeof(AzQueue));
             services.AddControllersWithViews();
             services.AddSignalR();
+ 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,4 +69,5 @@ namespace WaterMarkWeb
             });
         }
     }
-}
+
+    }

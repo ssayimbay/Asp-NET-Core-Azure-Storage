@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AzureStorageLibrary.Abstract
 {
-    public enum EContanierName
+    public enum EContainerName
     {
         pictures,
         pdf,
@@ -18,9 +18,9 @@ namespace AzureStorageLibrary.Abstract
     public interface IBlobStorage
     {
         public string BlobUrl { get;}
-        Task UploadAsync(Stream fileStream, string fileName, EContanierName eContanierName);
-        Task<Stream> DownloadAsync(string fileName, EContanierName eContanierName);
-        Task DeleteAsync(string fileName, EContanierName eContanierName);
-        List<string> GetNames(EContanierName eContanierName);
+        Task UploadAsync(Stream fileStream, string fileName, EContainerName eContanierName);
+        Task<Stream> DownloadAsync(string fileName, EContainerName eContanierName);
+        Task DeleteAsync(string fileName, EContainerName eContanierName);
+        List<string> GetNames(EContainerName eContanierName);
     }
 }

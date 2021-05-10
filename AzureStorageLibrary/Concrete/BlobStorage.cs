@@ -20,14 +20,14 @@ namespace AzureStorageLibrary.Concrete
             _blobServiceClient = new BlobServiceClient(AzureStorageConstant.AzureStorageConnectionString);
         }
 
-        public async Task DeleteAsync(string fileName, EContanierName eContanierName)
+        public async Task DeleteAsync(string fileName, EContainerName eContanierName)
         {
             var contanierClient = _blobServiceClient.GetBlobContainerClient(eContanierName.ToString());
             var blobClient = contanierClient.GetBlobClient(fileName);
             await blobClient.DeleteAsync();
         }
 
-        public async Task<Stream> DownloadAsync(string fileName, EContanierName eContanierName)
+        public async Task<Stream> DownloadAsync(string fileName, EContainerName eContanierName)
         {
             var contanierClient = _blobServiceClient.GetBlobContainerClient(eContanierName.ToString());
             var blobClient = contanierClient.GetBlobClient(fileName);
@@ -35,7 +35,7 @@ namespace AzureStorageLibrary.Concrete
             return info.Value.Content;
         }
 
-        public List<string> GetNames(EContanierName eContanierName)
+        public List<string> GetNames(EContainerName eContanierName)
         {
             List<string> blobNames = new List<string>();
             var contanierClient = _blobServiceClient.GetBlobContainerClient(eContanierName.ToString());
@@ -47,7 +47,7 @@ namespace AzureStorageLibrary.Concrete
             return blobNames;
         }
 
-        public async Task UploadAsync(Stream fileStream, string fileName, EContanierName eContanierName)
+        public async Task UploadAsync(Stream fileStream, string fileName, EContainerName eContanierName)
         {
             var contanierClient = _blobServiceClient.GetBlobContainerClient(eContanierName.ToString());
             await contanierClient.CreateIfNotExistsAsync();

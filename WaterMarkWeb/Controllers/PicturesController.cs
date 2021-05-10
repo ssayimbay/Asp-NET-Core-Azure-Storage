@@ -41,7 +41,7 @@ namespace WaterMarkWeb.Controllers
                     blobViewModels.Add(new BlobViewModel
                     {
                         Name = x,
-                        Url = $"{_blobStorage.BlobUrl}/{EContanierName.pictures}/{x}"
+                        Url = $"{_blobStorage.BlobUrl}/{EContainerName.pictures}/{x}"
                     });
                 });
             }
@@ -57,7 +57,7 @@ namespace WaterMarkWeb.Controllers
             {
                 var newPictureName = $"{Guid.NewGuid()}{Path.GetExtension(picture.FileName)}";
 
-                await _blobStorage.UploadAsync(picture.OpenReadStream(), newPictureName, EContanierName.pictures);
+                await _blobStorage.UploadAsync(picture.OpenReadStream(), newPictureName, EContainerName.pictures);
                 pictureList.Add(newPictureName);
             }
 
@@ -105,7 +105,7 @@ namespace WaterMarkWeb.Controllers
             isUser.RawPaths = string.Empty;
             foreach (var picture in pictures)
             {
-                await _blobStorage.DeleteAsync(picture, EContanierName.pictures);
+                await _blobStorage.DeleteAsync(picture, EContainerName.pictures);
                 userPictures.Remove(picture);
             }
             isUser.Paths = userPictures;

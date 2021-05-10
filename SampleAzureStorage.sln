@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureStorageLibrary", "AzureStorageLibrary\AzureStorageLibrary.csproj", "{815A5F5E-674C-4C78-B204-9B82346CD23A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureStorageLibrary", "AzureStorageLibrary\AzureStorageLibrary.csproj", "{815A5F5E-674C-4C78-B204-9B82346CD23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarkWeb", "WaterMarkWeb\WaterMarkWeb.csproj", "{D1B8D700-94B0-4F57-942B-682795B22EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaterMarkWeb", "WaterMarkWeb\WaterMarkWeb.csproj", "{D1B8D700-94B0-4F57-942B-682795B22EF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatermarkProcessFunction", "WatermarkProcessFunction\WatermarkProcessFunction.csproj", "{2885FE91-0A62-45C7-ABB4-65D6C499E84E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D1B8D700-94B0-4F57-942B-682795B22EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1B8D700-94B0-4F57-942B-682795B22EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1B8D700-94B0-4F57-942B-682795B22EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2885FE91-0A62-45C7-ABB4-65D6C499E84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2885FE91-0A62-45C7-ABB4-65D6C499E84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2885FE91-0A62-45C7-ABB4-65D6C499E84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2885FE91-0A62-45C7-ABB4-65D6C499E84E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

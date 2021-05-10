@@ -1951,7 +1951,7 @@
       },
       "AzureStorageLibrary/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Azure.Storage.Blobs": "12.8.3",
           "Azure.Storage.Queues": "12.6.1",
