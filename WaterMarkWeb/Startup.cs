@@ -32,6 +32,7 @@ namespace WaterMarkWeb
             services.AddSingleton<IBlobStorage, BlobStorage>();
             services.AddScoped(typeof(IQueue), typeof(AzQueue));
             services.AddControllersWithViews();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +57,7 @@ namespace WaterMarkWeb
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<Hubs.NotificationHub>("/NotificationHub");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

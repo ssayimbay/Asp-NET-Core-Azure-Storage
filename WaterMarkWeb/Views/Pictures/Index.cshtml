@@ -3,15 +3,22 @@
 
 @section Scripts
 {
+    <script src="~/lib/microsoft-signalr/signalr.js"></script>
     <script type="text/javascript">
 
         $(document).ready(() => {
+
+            var connection = new signalR.HubConnectionBuilder().withUrl("/NotificationHub").build();
+
+            connection.start().then(() => {
+                console.log(connection.connectionId);
+            });
 
             var pictures = new Array();
 
             var UserId = "@ViewBag.UserId";
             var UserPartitionKey = "@ViewBag.UserPartitionKey";
-  
+
             $("#images img").click(function () {
 
                 if ($(this).hasClass("selected")) {
@@ -50,7 +57,7 @@
 
                 let pictureWaterMarkQueque =
                 {
-                    "UserId": UserId, "UserPartitionKey": UserPartitionKey, "ConnectionId": "123", "WatermarkText": $("#waterMarkText").val(), "Pictures": pictures
+                    "UserId": UserId, "UserPartitionKey": UserPartitionKey, "ConnectionId": connection.connectionId, "WatermarkText": $("#waterMarkText").val(), "Pictures": pictures
                 };
 
                 $.ajax({
@@ -73,44 +80,42 @@
 
         });
 
-
-
     </script>
 }
 
 
-    <div id="watermarkControl" class="row m-1 mt-5">
-        <input id="waterMarkText" type="text" class="form-control col-8" placeholder="Watermark text..." />
-        <button id="addWaterMark" class="btn btn-warning form-control col-2 offset-2">Add Watermark</button>
+<div id="watermarkControl" class="row m-1 mt-5">
+    <input id="waterMarkText" type="text" class="form-control col-8" placeholder="Watermark text..." />
+    <button id="addWaterMark" class="btn btn-warning form-control col-2 offset-2">Add Watermark</button>
 
+</div>
+
+<div id="header" class="row m-1 mt-3">
+    <hr />
+    <h2 class="text-center text-white bg-dark rounded p-1 col-12">Pictures</h2>
+</div>
+
+<div id="imagesControl" class="row">
+    <div class="col-10">
+
+        <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
+            <input class="form-control-file col-4" type="file" name="pictures" multiple />
+            <input class="btn btn-primary form-control offset-6 col-2" type="submit" value="Add Picture" />
+        </form>
     </div>
 
-    <div id="header" class="row m-1 mt-3">
-        <hr />
-        <h2 class="text-center text-white bg-dark rounded p-1 col-12">Pictures</h2>
+    <div class="col-2">
+        <button id="removePicture" class="btn btn-danger form-control">Remove Picture</button>
     </div>
+</div>
 
-    <div id="imagesControl" class="row">
-        <div class="col-10">
-         
-                <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
-                    <input class="form-control-file col-4" type="file" name="pictures" multiple />
-                    <input class="btn btn-primary form-control offset-6 col-2" type="submit" value="Add Picture" />
-                </form>
-            </div>
+<div class="row mt-5" id="images">
 
-        <div class="col-2">
-            <button id="removePicture" class="btn btn-danger form-control">Remove Picture</button>
-        </div>
+    <div class="col-12">
+        @foreach (var blob in Model)
+        {
+            <img style="width:200px; height:200px;" data-name="@blob.Name" src="@blob.Url" />
+        }
     </div>
-
-    <div class="row mt-5" id="images">
-
-        <div class="col-12">
-            @foreach (var blob in Model)
-            {
-                <img style="width:200px; height:200px;" data-name="@blob.Name" src="@blob.Url" />
-            }
-        </div>
-    </div>
+</div>
 
