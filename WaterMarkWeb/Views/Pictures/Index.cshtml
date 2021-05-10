@@ -9,6 +9,9 @@
 
             var pictures = new Array();
 
+            var UserId = "@ViewBag.UserId";
+            var UserPartitionKey = "@ViewBag.UserPartitionKey";
+  
             $("#images img").click(function () {
 
                 if ($(this).hasClass("selected")) {
@@ -43,6 +46,31 @@
                 }
             });
 
+            $("#addWaterMark").click(() => {
+
+                let pictureWaterMarkQueque =
+                {
+                    "UserId": UserId, "UserPartitionKey": UserPartitionKey, "ConnectionId": "123", "WatermarkText": $("#waterMarkText").val(), "Pictures": pictures
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: 'Pictures/AddWaterMark',
+                    data: { pictureWaterMarkQueque: pictureWaterMarkQueque },
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data, status) {
+                    console.log('success');
+                }
+
+                function errorFunc() {
+                    console.log('error');
+                }
+            });
+
         });
 
 
@@ -51,11 +79,9 @@
 }
 
 
-
-
     <div id="watermarkControl" class="row m-1 mt-5">
-        <input type="text" class="form-control col-8" placeholder="Watermark text..." />
-        <button class="btn btn-warning form-control col-2 offset-2">Add Watermark</button>
+        <input id="waterMarkText" type="text" class="form-control col-8" placeholder="Watermark text..." />
+        <button id="addWaterMark" class="btn btn-warning form-control col-2 offset-2">Add Watermark</button>
 
     </div>
 
@@ -66,11 +92,12 @@
 
     <div id="imagesControl" class="row">
         <div class="col-10">
-            <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
-                <input class="form-control-file col-4" type="file" name="pictures" multiple />
-                <input class="btn btn-primary form-control offset-6 col-2" type="submit" value="Add Picture" />
-            </form>
-        </div>
+         
+                <form class="form-inline row" asp-action="Index" method="post" enctype="multipart/form-data">
+                    <input class="form-control-file col-4" type="file" name="pictures" multiple />
+                    <input class="btn btn-primary form-control offset-6 col-2" type="submit" value="Add Picture" />
+                </form>
+            </div>
 
         <div class="col-2">
             <button id="removePicture" class="btn btn-danger form-control">Remove Picture</button>

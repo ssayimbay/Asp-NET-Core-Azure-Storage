@@ -28,6 +28,9 @@ namespace WaterMarkWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.UserId = UserFakeDBModel.UserId;
+            ViewBag.UserPartitionKey = UserFakeDBModel.UserPartitonKey;
+
             List<BlobViewModel> blobViewModels = new List<BlobViewModel>();
 
             var userPicture = await _noSqlStorage.Get(UserFakeDBModel.UserId, UserFakeDBModel.UserPartitonKey);
@@ -80,8 +83,14 @@ namespace WaterMarkWeb.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddWaterMark(PictureWaterMarkQueque pictureWaterMarkQueque)
         {
+            if(pictureWaterMarkQueque.Pictures == null)
+            {
+                return BadRequest();
+            }
+
             var jsonString = JsonConvert.SerializeObject(pictureWaterMarkQueque);
             var jsonStringBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(jsonString));
             await _queue.SendMessageAsync(jsonStringBase64);
